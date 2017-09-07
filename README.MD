@@ -33,5 +33,11 @@ Copy the denoted certs from ***certs*** to ***client-proxy/nginx/certs***.
 2. Use the curl client to test the connection and the request forwarding including certification validation.
 Use ***curl http://localhost:8081***.
 
-# step 4 How it works:
+# Step 4 - Validate SSL
+To make sure SSL is encorced under any cirsumstances, use curl and try directly accessing the server-proxy. To do that, change into the directory **client-proxy/nginx/certs** and use the following command:
+**curl -v -s -k --key client.key --cert client.crt https://localhost**
+
+The result shows you the body as well as the meta and header informations. Make sure SSL is enabled.
+
+# Step 5 How it works:
 If you are curling (browsing) to the client-proxy (simple nginx), the client proxy forwards your request to an upstream proxy. This upstream proxy is an nginx proxy with SSL and client certification enabled. Therefore, the client-proxy injects the necessary client certificates that the server-proxy is able to validate and pass the request. The server-proxy then can forward the request to an upstream of choice. In the current example we are using a third nginx (nginx-backend) with simple HTTP capabilities. The nginx-backend is a default nginx without any additional configurations. 
