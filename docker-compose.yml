@@ -12,7 +12,7 @@ services:
       - "server_proxy:LOCAL_HOST_IP"
     volumes:
       - ./client-proxy/nginx:/etc/nginx/
-  
+    
   server_proxy:
     container_name: nginx-server-proxy
     image: nginx:latest
@@ -25,7 +25,7 @@ services:
       - "server_backend:LOCAL_HOST_IP"
     volumes:
       - ./server-proxy/nginx:/etc/nginx/
-  
+    
   server_backend:
     container_name: nginx-backend
     image: nginx:latest
