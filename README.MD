@@ -7,6 +7,9 @@ All certs are self signed and therefore for developement only. I added a set of 
 
 It's also possible to combine a official signed x509 (HTTPS) certificate and use an additional self-signed client certificate for authentication.
 
+# Scenario
+"Client/Broweser" --http/s without client cert.--> "client-proxy" --https with client cert.--> "server-proxy" --http/s without client cert.--> "target/nginx-backend"
+
 # Step 1 - Generate Certificates for SSL
 Generate the demo certs by using the ***create-certs.sh*** shell scrip. It will create the necessary certs for the server and the client.
 
