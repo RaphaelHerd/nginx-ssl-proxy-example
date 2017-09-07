@@ -35,7 +35,10 @@ Use ***curl http://localhost:8081***.
 
 # Step 4 - Validate SSL
 To make sure SSL is encorced under any cirsumstances, use curl and try directly accessing the server-proxy. To do that, change into the directory **client-proxy/nginx/certs** and use the following command:
-**curl -v -s -k --key client.key --cert client.crt https://localhost**
+
+```
+curl -v -s -k --key client.key --cert client.crt https://localhost
+```
 
 The result shows you the body as well as the meta and header informations. Make sure SSL is enabled.
 
