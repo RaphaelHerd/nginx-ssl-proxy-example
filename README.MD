@@ -27,11 +27,11 @@ On the client, we are only using
 
 Copy the denoted certs from ***certs*** to ***client-proxy/nginx/certs***.
 
-# Start and Test Client and Server
+# step 3 Start and Test Client and Server
 1. Start server in a seperate terminal by using ***start-compose.sh***. It will start a docker compose script in interactive (it) mode that you are able to see the server logs in the console.
 
 2. Use the curl client to test the connection and the request forwarding including certification validation.
 Use ***curl http://localhost:8081***.
 
-# How it works:
+# step 4 How it works:
 If you are curling (browsing) to the client-proxy (simple nginx), the client proxy forwards your request to an upstream proxy. This upstream proxy is an nginx proxy with SSL and client certification enabled. Therefore, the client-proxy injects the necessary client certificates that the server-proxy is able to validate and pass the request. The server-proxy then can forward the request to an upstream of choice. In the current example we are using a third nginx (nginx-backend) with simple HTTP capabilities. The nginx-backend is a default nginx without any additional configurations. 
