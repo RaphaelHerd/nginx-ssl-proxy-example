@@ -1,0 +1,34 @@
+version: '3'
+services:
+  client_proxy:
+    container_name: nginx-client-proxy
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    depends_on:
+      - server_proxy
+    extra_hosts:
+      - "server_proxy:LOCAL_HOST_IP"
+    volumes:
+      - ./client-proxy/nginx:/etc/nginx/
+  
+  server_proxy:
+    container_name: nginx-server-proxy
+    image: nginx:latest
+    restart: unless-stopped
+    depends_on:
+      - server_backend
+    ports:
+      - "443:443"
+    extra_hosts:
+      - "server_backend:LOCAL_HOST_IP"
+    volumes:
+      - ./server-proxy/nginx:/etc/nginx/
+  
+  server_backend:
+    container_name: nginx-backend
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - "8083:80"
